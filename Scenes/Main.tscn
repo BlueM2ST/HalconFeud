@@ -1179,6 +1179,20 @@ margin_bottom = 44.0
 texture = ExtResource( 11 )
 expand = true
 
+[node name="EndRoundLeft" type="Button" parent="Host"]
+margin_left = 43.0
+margin_top = 406.0
+margin_right = 215.0
+margin_bottom = 459.0
+text = "End Round, points to Left"
+
+[node name="EndRoundRight" type="Button" parent="Host"]
+margin_left = 523.0
+margin_top = 409.0
+margin_right = 703.0
+margin_bottom = 462.0
+text = "End Round, points to Right"
+
 [node name="Init" type="Control" parent="."]
 margin_right = 1029.0
 margin_bottom = 601.0

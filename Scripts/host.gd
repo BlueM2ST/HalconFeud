@@ -22,6 +22,8 @@ func _ready():
 		xButton.connect("pressed", self, "x_button_pressed", [xButton])
 	# connect button to start the round
 	$StartRoundButton.connect("pressed", self, "start_round_button_pressed")
+	$EndRoundLeft.connect("pressed", self, "end_round_button_pressed", [$EndRoundLeft])
+	$EndRoundRight.connect("pressed", self, "end_round_button_pressed", [$EndRoundRight])
 
 
 func hostShowScreen():
@@ -29,6 +31,15 @@ func hostShowScreen():
 	hostLoadAnswerDataFromFile()
 	hostDisplayRoundTabs()
 	hostResetRound()
+
+
+func end_round_button_pressed(button:Button):
+	if "Right" in button.name:
+		print("right")
+		client.rpc("clientEndRound", "right")
+	else:
+		print("left")
+		client.rpc("clientEndRound", "left")
 
 
 func x_button_pressed(button:Button):
