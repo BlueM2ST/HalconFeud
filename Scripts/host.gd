@@ -17,6 +17,9 @@ func _ready():
 	# connect sound buttons
 	for soundButton in get_node("SoundSection").get_children():
 		soundButton.connect("pressed", self, "sound_button_pressed", [soundButton])
+	# connect x buttons
+	for xButton in get_node("XButtons").get_children():
+		xButton.connect("pressed", self, "x_button_pressed", [xButton])
 	# connect button to start the round
 	$StartRoundButton.connect("pressed", self, "start_round_button_pressed")
 
@@ -25,9 +28,14 @@ func hostShowScreen():
 	self.show()
 	hostLoadAnswerDataFromFile()
 	hostDisplayRoundTabs()
+	hostResetRound()
 
 
-func toggle_button_pressed(button):
+func x_button_pressed(button:Button):
+	client.rpc("clientShowXButton", button.name)
+
+
+func toggle_button_pressed(button:Button):
 	if button.text == "Show":
 		button.get_parent().color = Color("#6ad41b")
 		client.rpc("clientShowAnswer", int(button.get_parent().name.split("")[-1])-1)
@@ -39,24 +47,20 @@ func toggle_button_pressed(button):
 
 
 func start_round_button_pressed():
-	displayNewRound()
+	client.rpc("clientDisplayRound", allRoundData[roundArray[currentRoundIndex]], roundArray[currentRoundIndex])
+	hostDisplayRound(allRoundData[roundArray[currentRoundIndex]], roundArray[currentRoundIndex])
 
 
-func sound_button_pressed(button):
+func sound_button_pressed(button:Button):
 	client.rpc("clientPlaySound", button.text.split(" ")[-1].to_lower())
 
 
-func round_select_button_pressed(button):
+func round_select_button_pressed(button:Button):
 	# the button name is the index of the answers to the round
 	if currentRoundIndex == int(button.name) -1:
 		return
 	currentRoundIndex = int(button.name) -1
-	displayNewRound()
-
-
-func displayNewRound():
-	client.rpc("clientDisplayRound", allRoundData[roundArray[currentRoundIndex]], roundArray[currentRoundIndex])
-	hostDisplayRound(allRoundData[roundArray[currentRoundIndex]], roundArray[currentRoundIndex])
+	hostResetRound()
 
 
 # the host will load the round data from a file
@@ -95,13 +99,7 @@ func hostDisplayRound(answersArray:Array, roundName:String):
 	# add answer and point data to the slots on the client screen
 	for index in range(len(answerSlots)):
 		var slot = answerSlots[index]
-		# reset
-		slot.get_node("AnswerText").bbcode_text = ""
-		slot.color = Color("#ea1919")
-		slot.get_node("ScoreBackground/ScoreText").bbcode_enabled = true
-		slot.get_node("ScoreBackground/ScoreText").bbcode_text = ""
-		slot.get_node("ShowToggle").disabled = false
-		slot.get_node("ShowToggle").text = "Show"
+		hostResetAnswerSlot(slot)
 		# if there is an answer at the index, display it
 		if len(answersArray) > index:
 			slot.get_node("AnswerText").bbcode_text = "[center]" + answersArray[index]["answer"] + "[/center]"
@@ -112,6 +110,23 @@ func hostDisplayRound(answersArray:Array, roundName:String):
 			slot.color = Color("#786a6a")
 
 
+func hostResetRound():
+	var answerSlots = $AnswerSection.get_children()
+	# add answer and point data to the slots on the client screen
+	for index in range(len(answerSlots)):
+		var slot = answerSlots[index]
+		hostResetAnswerSlot(slot)
+		slot.get_node("AnswerText").bbcode_text = "Round not started"
+		slot.get_node("ShowToggle").disabled = true
+
+
+func hostResetAnswerSlot(slot):
+	slot.get_node("AnswerText").bbcode_text = ""
+	slot.color = Color("#ea1919")
+	slot.get_node("ScoreBackground/ScoreText").bbcode_enabled = true
+	slot.get_node("ScoreBackground/ScoreText").bbcode_text = ""
+	slot.get_node("ShowToggle").disabled = false
+	slot.get_node("ShowToggle").text = "Show"
 
 
 
