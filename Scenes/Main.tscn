@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/fontTheme.theme" type="Theme" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Images/square.png" type="Texture" id=8]
 [ext_resource path="res://Images/answerRect.png" type="Texture" id=9]
 [ext_resource path="res://Images/circle.png" type="Texture" id=10]
+[ext_resource path="res://Images/wrong.png" type="Texture" id=11]
 [ext_resource path="res://Images/FamilyFeud_PurpleBG.jpg" type="Texture" id=12]
 [ext_resource path="res://Scripts/host.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/client.gd" type="Script" id=15]
@@ -630,7 +631,7 @@ margin_right = 0.359985
 margin_bottom = 0.48999
 color = Color( 0.321569, 0.239216, 0.890196, 1 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Client/Board/RoundScore"]
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/RoundScore"]
 anchor_left = 0.01
 anchor_top = 0.12
 anchor_right = 0.975
@@ -643,6 +644,78 @@ theme = ExtResource( 3 )
 bbcode_enabled = true
 bbcode_text = "[center]0[/center]"
 text = "0"
+
+[node name="XDisplay" type="Control" parent="Client"]
+margin_right = 1025.0
+margin_bottom = 603.0
+
+[node name="1" type="TextureRect" parent="Client/XDisplay"]
+visible = false
+margin_left = 448.0
+margin_top = 231.0
+margin_right = 587.0
+margin_bottom = 369.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="2" type="TextureRect" parent="Client/XDisplay"]
+visible = false
+margin_left = 400.0
+margin_top = 188.0
+margin_right = 640.0
+margin_bottom = 426.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="3" type="Control" parent="Client/XDisplay"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="1" type="TextureRect" parent="Client/XDisplay/3"]
+margin_left = 257.0
+margin_top = 189.0
+margin_right = 497.0
+margin_bottom = 427.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="2" type="TextureRect" parent="Client/XDisplay/3"]
+margin_left = 530.0
+margin_top = 191.0
+margin_right = 770.0
+margin_bottom = 429.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="4" type="Control" parent="Client/XDisplay"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="1" type="TextureRect" parent="Client/XDisplay/4"]
+margin_left = 395.0
+margin_top = 190.0
+margin_right = 635.0
+margin_bottom = 428.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="2" type="TextureRect" parent="Client/XDisplay/4"]
+margin_left = 145.0
+margin_top = 189.0
+margin_right = 385.0
+margin_bottom = 427.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="3" type="TextureRect" parent="Client/XDisplay/4"]
+margin_left = 644.0
+margin_top = 191.0
+margin_right = 884.0
+margin_bottom = 429.0
+texture = ExtResource( 11 )
+expand = true
 
 [node name="Host" type="Control" parent="."]
 visible = false
@@ -1013,6 +1086,98 @@ margin_left = 40.0
 margin_top = 23.0
 margin_right = 987.0
 margin_bottom = 80.0
+
+[node name="XButtons" type="Control" parent="Host"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="1" type="Button" parent="Host/XButtons"]
+margin_left = 30.0
+margin_top = 528.0
+margin_right = 150.0
+margin_bottom = 576.0
+text = "small X"
+align = 2
+
+[node name="TextureRect" type="TextureRect" parent="Host/XButtons/1"]
+margin_left = 14.0
+margin_top = 12.0
+margin_right = 38.0
+margin_bottom = 38.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="2" type="Button" parent="Host/XButtons"]
+margin_left = 159.0
+margin_top = 528.0
+margin_right = 279.0
+margin_bottom = 576.0
+text = "One X"
+align = 2
+
+[node name="TextureRect" type="TextureRect" parent="Host/XButtons/2"]
+margin_left = 11.0
+margin_top = 4.0
+margin_right = 51.0
+margin_bottom = 44.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="3" type="Button" parent="Host/XButtons"]
+margin_left = 291.0
+margin_top = 529.0
+margin_right = 439.0
+margin_bottom = 577.0
+text = "Two X"
+align = 2
+
+[node name="TextureRect" type="TextureRect" parent="Host/XButtons/3"]
+margin_left = 11.0
+margin_top = 4.0
+margin_right = 51.0
+margin_bottom = 44.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="Host/XButtons/3"]
+margin_left = 54.0
+margin_top = 4.0
+margin_right = 94.0
+margin_bottom = 44.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="4" type="Button" parent="Host/XButtons"]
+margin_left = 449.0
+margin_top = 530.0
+margin_right = 642.0
+margin_bottom = 578.0
+text = "Three X"
+align = 2
+
+[node name="TextureRect" type="TextureRect" parent="Host/XButtons/4"]
+margin_left = 11.0
+margin_top = 4.0
+margin_right = 51.0
+margin_bottom = 44.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="TextureRect2" type="TextureRect" parent="Host/XButtons/4"]
+margin_left = 54.0
+margin_top = 4.0
+margin_right = 94.0
+margin_bottom = 44.0
+texture = ExtResource( 11 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="Host/XButtons/4"]
+margin_left = 97.0
+margin_top = 4.0
+margin_right = 137.0
+margin_bottom = 44.0
+texture = ExtResource( 11 )
+expand = true
 
 [node name="Init" type="Control" parent="."]
 margin_right = 1029.0
