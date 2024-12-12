@@ -36,6 +36,11 @@ remote func clientShowAnswer(id:int):
 	var answerSlots = $Board/InnerBoard.get_children()
 	answerSlots[id].get_node("Hide").hide()
 	answerSlots[id].get_node("Show").show()
+	# add score to round score
+	var currentScore = int(get_node("Board/RoundScore/ScoreText").bbcode_text)
+	currentScore += int(answerSlots[id].get_node("Show/ScoreBox/ScoreText").bbcode_text)
+	get_node("Board/RoundScore/ScoreText").bbcode_text = "[center]" + String(currentScore) + "[/center]"
+	
 
 
 # hide the answer based on id
@@ -43,6 +48,20 @@ remote func clientHideAnswer(id:int):
 	var answerSlots = $Board/InnerBoard.get_children()
 	answerSlots[id].get_node("Hide").show()
 	answerSlots[id].get_node("Show").hide()
+	# subtract score from round score
+	var currentScore = int(get_node("Board/RoundScore/ScoreText").bbcode_text)
+	currentScore -= int(answerSlots[id].get_node("Show/ScoreBox/ScoreText").bbcode_text)
+	get_node("Board/RoundScore/ScoreText").bbcode_text = "[center]" + String(currentScore) + "[/center]"
+
+
+remote func clientShowXButton(index:String):
+	var time = 2
+	get_node("XDisplay/" + index).show()
+	clientPlaySound("buzzer")
+	yield(get_tree().create_timer(time), "timeout")
+	get_node("XDisplay/" + index).hide()
+
+
 
 
 
