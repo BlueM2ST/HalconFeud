@@ -1,0 +1,1036 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Scripts/main.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/fontTheme.theme" type="Theme" id=2]
+[ext_resource path="res://Scenes/clientFontTheme.theme" type="Theme" id=3]
+[ext_resource path="res://Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Images/board.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/clientAnswerTheme.theme" type="Theme" id=6]
+[ext_resource path="res://Images/answerScoreRect.png" type="Texture" id=7]
+[ext_resource path="res://Images/square.png" type="Texture" id=8]
+[ext_resource path="res://Images/answerRect.png" type="Texture" id=9]
+[ext_resource path="res://Images/circle.png" type="Texture" id=10]
+[ext_resource path="res://Images/FamilyFeud_PurpleBG.jpg" type="Texture" id=12]
+[ext_resource path="res://Scripts/host.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/client.gd" type="Script" id=15]
+
+[sub_resource type="DynamicFont" id=1]
+size = 56
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Main" type="Control"]
+margin_right = 1023.0
+margin_bottom = 601.0
+script = ExtResource( 1 )
+
+[node name="Client" type="Control" parent="."]
+visible = false
+margin_right = 1027.0
+margin_bottom = 603.0
+script = ExtResource( 15 )
+
+[node name="Background" type="TextureRect" parent="Client"]
+margin_right = 1024.0
+margin_bottom = 605.0
+texture = ExtResource( 12 )
+expand = true
+
+[node name="Board" type="TextureRect" parent="Client"]
+margin_left = 14.0
+margin_right = 1008.0
+margin_bottom = 599.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="InnerBoard" type="TextureRect" parent="Client/Board"]
+anchor_left = 0.246
+anchor_top = 0.322
+anchor_right = 0.757
+anchor_bottom = 0.83
+margin_left = 0.475998
+margin_top = 1.12198
+margin_right = -0.458008
+margin_bottom = -0.170013
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 5
+
+[node name="1" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 19.0
+margin_top = 22.0
+margin_right = 249.0
+margin_bottom = 77.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/1"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/1/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/1/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/1/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/1"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/1/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/1/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]1[/center]"
+text = "1"
+
+[node name="2" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 19.0
+margin_top = 82.0
+margin_right = 249.0
+margin_bottom = 137.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/2"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/2/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/2/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/2/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/2"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/2/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/2/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]2[/center]"
+text = "2"
+
+[node name="3" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 19.0
+margin_top = 142.0
+margin_right = 249.0
+margin_bottom = 197.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/3"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/3/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/3/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/3/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/3"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/3/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/3/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]3[/center]"
+text = "3"
+
+[node name="4" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 19.0
+margin_top = 202.0
+margin_right = 249.0
+margin_bottom = 257.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/4"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/4/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/4/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/4/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/4"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/4/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/4/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]4[/center]"
+text = "4"
+
+[node name="5" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 257.0
+margin_top = 22.0
+margin_right = 487.0
+margin_bottom = 77.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/5"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/5/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/5/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/5/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/5"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/5/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/5/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]5[/center]"
+text = "5"
+
+[node name="6" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 257.0
+margin_top = 82.0
+margin_right = 487.0
+margin_bottom = 137.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/6"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/6/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/6/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/6/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/6"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/6/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/6/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]6[/center]"
+text = "6"
+
+[node name="7" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 257.0
+margin_top = 142.0
+margin_right = 487.0
+margin_bottom = 197.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/7"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/7/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/7/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/7/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/7"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/7/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/7/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]7[/center]"
+text = "7"
+
+[node name="8" type="TextureRect" parent="Client/Board/InnerBoard"]
+margin_left = 257.0
+margin_top = 202.0
+margin_right = 487.0
+margin_bottom = 257.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 1
+
+[node name="Show" type="Control" parent="Client/Board/InnerBoard/8"]
+visible = false
+margin_right = 231.0
+margin_bottom = 53.0
+
+[node name="AnswerText" type="RichTextLabel" parent="Client/Board/InnerBoard/8/Show"]
+margin_left = 5.0
+margin_top = 11.0
+margin_right = 195.0
+margin_bottom = 47.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="ScoreBox" type="TextureRect" parent="Client/Board/InnerBoard/8/Show"]
+margin_left = 194.0
+margin_top = 8.0
+margin_right = 225.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/InnerBoard/8/Show/ScoreBox"]
+margin_left = 2.0
+margin_top = 4.0
+margin_right = 30.0
+margin_bottom = 39.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+scroll_active = false
+
+[node name="Hide" type="Control" parent="Client/Board/InnerBoard/8"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 228.0
+margin_bottom = 48.0
+
+[node name="Circle" type="TextureRect" parent="Client/Board/InnerBoard/8/Hide"]
+margin_left = 87.0
+margin_top = 5.0
+margin_right = 131.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 6
+
+[node name="AnswerNumberText" type="RichTextLabel" parent="Client/Board/InnerBoard/8/Hide/Circle"]
+margin_top = 3.0
+margin_right = 44.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[center]8[/center]"
+text = "8"
+
+[node name="ScoreLeft" type="ColorRect" parent="Client/Board"]
+anchor_left = 0.032
+anchor_top = 0.406
+anchor_right = 0.183
+anchor_bottom = 0.57
+margin_left = -0.768002
+margin_top = 1.80598
+margin_right = -0.845016
+margin_bottom = 1.91397
+color = Color( 0.321569, 0.239216, 0.890196, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/ScoreLeft"]
+margin_left = 14.0
+margin_top = 21.0
+margin_right = 139.0
+margin_bottom = 90.0
+theme = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]0[/center]"
+text = "0"
+
+[node name="ScoreRight" type="ColorRect" parent="Client/Board"]
+anchor_left = 0.81
+anchor_top = 0.406
+anchor_right = 0.961
+anchor_bottom = 0.55
+margin_left = 1.55994
+margin_top = 1.80598
+margin_right = 1.48297
+margin_bottom = 13.974
+color = Color( 0.321569, 0.239216, 0.890196, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Client/Board/ScoreRight"]
+anchor_left = 0.077
+anchor_top = 0.222
+anchor_right = 0.955
+anchor_bottom = 0.97
+margin_left = -3.935
+margin_top = 0.0219975
+margin_right = -0.0250092
+margin_bottom = -0.0300064
+theme = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]0[/center]"
+text = "0"
+
+[node name="RoundScore" type="ColorRect" parent="Client/Board"]
+anchor_left = 0.394
+anchor_top = 0.104
+anchor_right = 0.586
+anchor_bottom = 0.242
+margin_left = 0.543976
+margin_top = 0.703999
+margin_right = 0.359985
+margin_bottom = 0.48999
+color = Color( 0.321569, 0.239216, 0.890196, 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Client/Board/RoundScore"]
+anchor_left = 0.01
+anchor_top = 0.12
+anchor_right = 0.975
+anchor_bottom = 0.988
+margin_left = 0.0299999
+margin_top = 0.04
+margin_right = -0.0750122
+margin_bottom = -0.00400543
+theme = ExtResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]0[/center]"
+text = "0"
+
+[node name="Host" type="Control" parent="."]
+visible = false
+anchor_right = 1.003
+anchor_bottom = 1.0
+margin_right = -2.06897
+script = ExtResource( 14 )
+
+[node name="Background" type="ColorRect" parent="Host"]
+anchor_right = 0.998
+anchor_bottom = 0.997
+margin_right = 0.0479736
+margin_bottom = -0.197021
+color = Color( 0.0941176, 0.0862745, 0.0862745, 1 )
+
+[node name="AnswerSection" type="Control" parent="Host"]
+anchor_left = 0.032
+anchor_top = 0.228
+anchor_right = 0.695
+anchor_bottom = 0.789
+margin_left = 0.231998
+margin_top = -0.0279999
+margin_right = 0.319946
+margin_bottom = -0.189026
+
+[node name="AnswerTab1" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 10.0
+margin_top = 13.0
+margin_right = 323.0
+margin_bottom = 53.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab1"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab1"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab1"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.176471, 0.14902, 0.14902, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab1/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="AnswerTab2" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 10.0
+margin_top = 74.0
+margin_right = 323.0
+margin_bottom = 114.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab2"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab2"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab2"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.188235, 0.160784, 0.160784, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab2/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="AnswerTab3" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 10.0
+margin_top = 132.0
+margin_right = 323.0
+margin_bottom = 172.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab3"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab3"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab3"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.188235, 0.160784, 0.160784, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab3/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="AnswerTab4" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 10.0
+margin_top = 191.0
+margin_right = 323.0
+margin_bottom = 231.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab4"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab4"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab4"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.188235, 0.160784, 0.160784, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab4/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="AnswerTab5" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 350.0
+margin_top = 13.0
+margin_right = 663.0
+margin_bottom = 53.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab5"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab5"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab5"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.188235, 0.160784, 0.160784, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab5/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="AnswerTab6" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 350.0
+margin_top = 75.0
+margin_right = 663.0
+margin_bottom = 115.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab6"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab6"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab6"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.188235, 0.160784, 0.160784, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab6/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="AnswerTab7" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 350.0
+margin_top = 136.0
+margin_right = 663.0
+margin_bottom = 176.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab7"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab7"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab7"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.188235, 0.160784, 0.160784, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab7/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="AnswerTab8" type="ColorRect" parent="Host/AnswerSection"]
+margin_left = 350.0
+margin_top = 192.0
+margin_right = 663.0
+margin_bottom = 232.0
+color = Color( 0.917647, 0.0980392, 0.0980392, 1 )
+
+[node name="ShowToggle" type="Button" parent="Host/AnswerSection/AnswerTab8"]
+margin_right = 60.0
+margin_bottom = 39.0
+text = "Show"
+
+[node name="AnswerText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab8"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 270.0
+margin_bottom = 43.0
+theme = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]This is some text here and[/center]"
+text = "This is some text here and"
+
+[node name="ScoreBackground" type="ColorRect" parent="Host/AnswerSection/AnswerTab8"]
+margin_left = 272.0
+margin_right = 316.0
+margin_bottom = 40.0
+color = Color( 0.188235, 0.160784, 0.160784, 1 )
+
+[node name="ScoreText" type="RichTextLabel" parent="Host/AnswerSection/AnswerTab8/ScoreBackground"]
+margin_left = 8.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+text = "90"
+
+[node name="StartRoundButton" type="Button" parent="Host"]
+margin_left = 297.0
+margin_top = 409.0
+margin_right = 445.0
+margin_bottom = 462.0
+text = "Start Round"
+
+[node name="SoundSection" type="Control" parent="Host"]
+margin_left = 784.0
+margin_top = 151.0
+margin_right = 985.0
+margin_bottom = 369.0
+
+[node name="Bell" type="Button" parent="Host/SoundSection"]
+margin_right = 200.0
+margin_bottom = 32.0
+text = "Play Bell"
+
+[node name="Bell2" type="Button" parent="Host/SoundSection"]
+margin_top = 38.0
+margin_right = 200.0
+margin_bottom = 70.0
+text = "Play Buzzer"
+
+[node name="Bell3" type="Button" parent="Host/SoundSection"]
+margin_left = 1.0
+margin_top = 77.0
+margin_right = 201.0
+margin_bottom = 109.0
+text = "Play Duplicate"
+
+[node name="Bell4" type="Button" parent="Host/SoundSection"]
+margin_left = 1.0
+margin_top = 115.0
+margin_right = 201.0
+margin_bottom = 147.0
+text = "Play No_points"
+
+[node name="Bell5" type="Button" parent="Host/SoundSection"]
+margin_left = 1.0
+margin_top = 153.0
+margin_right = 201.0
+margin_bottom = 185.0
+text = "Play Points"
+
+[node name="Bell6" type="Button" parent="Host/SoundSection"]
+margin_left = 1.0
+margin_top = 192.0
+margin_right = 201.0
+margin_bottom = 224.0
+text = "Play Reveal"
+
+[node name="RoundSelectioContainer" type="HBoxContainer" parent="Host"]
+margin_left = 40.0
+margin_top = 23.0
+margin_right = 987.0
+margin_bottom = 80.0
+
+[node name="Init" type="Control" parent="."]
+margin_right = 1029.0
+margin_bottom = 601.0
+
+[node name="HostSelect" type="Button" parent="Init"]
+margin_left = 438.0
+margin_top = 169.0
+margin_right = 581.0
+margin_bottom = 233.0
+text = "Host"
+
+[node name="ClientSelect" type="Button" parent="Init"]
+margin_left = 432.0
+margin_top = 300.0
+margin_right = 587.0
+margin_bottom = 367.0
+text = "Client"
+
+[connection signal="pressed" from="Init/HostSelect" to="." method="_on_HostSelect_pressed"]
+[connection signal="pressed" from="Init/ClientSelect" to="." method="_on_ClientSelect_pressed"]
